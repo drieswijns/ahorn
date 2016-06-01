@@ -206,15 +206,3 @@ class TTTState(BaseState):
         for row in self.board:
             s += "\t"+" ".join(row)+"\n"
         s += "Player {}'s turn".format(self.pi)
-
-    def __hash__(self):
-        """Hash of the current state.
-
-        Parameters
-        ----------
-
-        Returns
-        -------
-        int
-            The hash of the state"""
-        return hash(str(self))

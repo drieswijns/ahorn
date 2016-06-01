@@ -23,5 +23,5 @@ def test_random_player():
         # at least once by the random player
         chosen_action = rp.get_action(state)
         chosen_actions.add(hash(chosen_action))
-
+    
     assert(len(all_actions^chosen_actions) == 0)

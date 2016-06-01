@@ -120,7 +120,6 @@ class State(metaclass=abc.ABCMeta):
             String representation of this state."""
         pass
 
-    @abc.abstractmethod
     def __hash__(self):
         """Get a hash of the current state.
 
@@ -131,4 +130,4 @@ class State(metaclass=abc.ABCMeta):
         -------
         int
             The hash of the state"""
-        pass
+        return hash(str(self))

@@ -43,8 +43,7 @@ class Action(metaclass=abc.ABCMeta):
             String representation of this action."""
         pass
 
-    @abc.abstractmethod
-    def __init__(self):
+    def __hash__(self):
         """Get a hash of the current action.
 
         Parameters
@@ -54,4 +53,4 @@ class Action(metaclass=abc.ABCMeta):
         -------
         int
             The hash of the action"""
-        pass
+        return hash(str(self))
