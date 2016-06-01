@@ -1,5 +1,5 @@
-from ahorn.TicTacToe.TTTActions import TTTAction
-from ahorn.TicTacToe.TTTStates import TTTState
+from ahorn.TicTacToe import TTTAction
+from ahorn.TicTacToe import TTTState
 
 from tests.MockPlayer import MockPlayer as MockPlayer
 
