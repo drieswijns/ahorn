@@ -43,7 +43,7 @@ class State(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def get_random(self):
+    def get_random(self, player):
         """Get a random sample from the information set of the current state.
 
         This method can be used to hide certain attributes of the state, such
@@ -53,6 +53,8 @@ class State(metaclass=abc.ABCMeta):
 
         Parameters
         -----------
+        player: Player
+            The information set is created from the point of view of this actor
 
         Returns
         -------
@@ -71,6 +73,36 @@ class State(metaclass=abc.ABCMeta):
         -------
         Actor
             The actor that must perform an action in this state."""
+        pass
+
+    @abc.abstractmethod
+    def get_utility(self, player):
+        """Return the utility a given player receives.
+
+        If the state is final, returns a utility, else returns None
+
+        Parameters
+        ----------
+        player: Player
+            The player for which to find the utility
+
+        Returns
+        -------
+        utility: int
+            The utility received by the player, or None"""
+        pass
+
+    @abc.abstractmethod
+    def __str__(self):
+        """A string representation of this state.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        str
+            String representation of this state."""
         pass
 
     @abc.abstractmethod
