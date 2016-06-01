@@ -9,7 +9,7 @@ class TTTState(BaseState):
         Parameters
         ----------
         players: List
-            A list of Player objects
+            A list containing 2 Player objects
 
         Returns
         -------
@@ -19,6 +19,7 @@ class TTTState(BaseState):
             ["-", "-", "-"],
             ["-", "-", "-"]
         ]
+        assert(len(players) == 2)
         self.players = players
         self.pi = 0  # index of the current players
 
@@ -123,7 +124,7 @@ class TTTState(BaseState):
         State
             A copy of this state"""
         new = TTTState(self.players)
-        new.copy(this)
+        new.copy(self)
         return new
 
     def get_actor(self):

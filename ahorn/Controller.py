@@ -1,6 +1,6 @@
 class Controller(object):
     """A controller is used to play a game."""
-    def __init__(self, players, initial_state, verbose=False):
+    def __init__(self, initial_state, verbose=False):
         """Create a controller by providing players and a state
 
         Parameters
@@ -13,8 +13,7 @@ class Controller(object):
         Returns
         -------
         """
-        self.players = players
-        self.state = inititial_state
+        self.state = initial_state
         self.verbose = verbose
 
     def play(self):

@@ -1,5 +1,6 @@
-from ahorn.TicTacToe import TTTAction
-from ahorn.TicTacToe import TTTState
+from ahorn.TicTacToe import TTTAction, TTTState
+from ahorn import Controller
+from ahorn.Actors import RandomPlayer
 
 from tests.MockPlayer import MockPlayer as MockPlayer
 
@@ -83,3 +84,15 @@ def test_is_final_negative():
         ["X", "-", "X"]
     ]
     assert(not state.is_final())
+
+def test_full_games():
+    # Play 10 full games without crashing
+    players = [RandomPlayer(), RandomPlayer()]
+    for _ in range(10):
+        s = TTTState(players)
+        c = Controller(s)
+        s = c.play()
+        assert(s.is_final())  # game should have ended
+        assert(  # game is zero-sum
+            s.get_utility(players[0]) + s.get_utility(players[1]) == 0
+        )
