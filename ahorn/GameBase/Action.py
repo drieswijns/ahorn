@@ -29,3 +29,29 @@ class Action(metaclass=abc.ABCMeta):
             The modified state
         """
         pass
+
+    @abc.abstractmethod
+    def __str__(self):
+        """A string representation of this action.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        str
+            String representation of this action."""
+        pass
+
+    @abc.abstractmethod
+    def __init__(self):
+        """Get a hash of the current action.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        int
+            The hash of the action"""
+        pass

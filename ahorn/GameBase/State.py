@@ -76,6 +76,21 @@ class State(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
+    def get_legal_actions(self, player):
+        """Return the legal actions a player can take in this state.
+
+        Parameters
+        ----------
+        player: Player
+            the player who wants to know which actions he can take
+
+        Returns
+        -------
+        actions: List
+            a list of Actions"""
+        pass
+
+    @abc.abstractmethod
     def get_utility(self, player):
         """Return the utility a given player receives.
 
