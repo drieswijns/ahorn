@@ -47,7 +47,7 @@ class TTTAction(BaseAction):
         -------
         str
             String representation of this action."""
-        return "Draws an {} in position {}".format(self.symbol, self.where)
+        return "Put an {} in position {}".format(self.symbol, self.where)
 
     def __hash__(self):
         """Get a hash of the current action.
