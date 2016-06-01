@@ -4,3 +4,6 @@ all:
 
 test: all
 	python -m pytest tests
+
+run: all
+	python run.py

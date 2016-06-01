@@ -207,3 +207,4 @@ class TTTState(BaseState):
         for row in self.board:
             s += "\t"+" ".join(row)+"\n"
         s += "Player {}'s turn".format(self.pi)
+        return s
