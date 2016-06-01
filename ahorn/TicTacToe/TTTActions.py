@@ -1,4 +1,4 @@
-from ..GameBase.Action import Action as BaseAction
+from ..GameBase import Action as BaseAction
 
 
 class TTTAction(BaseAction):

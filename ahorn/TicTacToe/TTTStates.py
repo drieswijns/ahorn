@@ -1,5 +1,5 @@
-from ..GameBase.State import State as BaseState
-from .TTTActions import TTTAction
+from ..GameBase import State as BaseState
+from . import TTTAction
 
 class TTTState(BaseState):
     """Describes a Tic-Tac-Toe state"""
