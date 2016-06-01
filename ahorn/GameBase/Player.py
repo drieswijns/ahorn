@@ -1,3 +1,4 @@
+from .Actor import Actor
 import abc
 
 class Player(Actor, metaclass=abc.ABCMeta):

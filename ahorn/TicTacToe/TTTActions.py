@@ -30,7 +30,7 @@ class TTTAction(BaseAction):
 
         Returns
         -------"""
-        r, c = *self.where
+        (r, c) = self.where
         state.board[r][c] = self.symbol
         state.pi = (state.pi+1) % 2
         return state

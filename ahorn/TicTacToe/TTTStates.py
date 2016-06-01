@@ -38,8 +38,8 @@ class TTTState(BaseState):
 
         for i, row in enumerate(other.board):
             for j, item in enumerate(row):
-                this.board[i][j] = item
-        this.pi = other.pi
+                self.board[i][j] = item
+        self.pi = other.pi
 
     def _find_success(self):
         """Find OOO or XXX rows.
@@ -88,7 +88,7 @@ class TTTState(BaseState):
         return None
 
     def is_final(self):
-        """Return true if there is an OXO on the board, or the board is full.
+        """Return true if there is an OOO or XXX on the board, or the board is full.
 
         Parameters
         ----------
@@ -97,8 +97,7 @@ class TTTState(BaseState):
         -------
         bool
             True if the state is an OXO on the board, false otherwise"""
-
-        if self._find_success:  # OOO or XXX found, game is over
+        if self._find_success():  # OOO or XXX found, game is over
             return True
 
         free_spots = sum([
@@ -123,7 +122,7 @@ class TTTState(BaseState):
         -------
         State
             A copy of this state"""
-        new = TTTState(this.players)
+        new = TTTState(self.players)
         new.copy(this)
         return new
 
@@ -139,7 +138,7 @@ class TTTState(BaseState):
         -------
         Actor
             The player that must perform an action in this state."""
-        return this.players[this.pi]
+        return self.players[self.pi]
 
     def get_legal_actions(self, player):
         """Return the legal actions a player can take in this state.
@@ -153,10 +152,10 @@ class TTTState(BaseState):
         -------
         actions: List
             a list of Actions"""
-        symbol = ["O", "X"][this.players.index(player)]
+        symbol = ["O", "X"][self.players.index(player)]
 
         legal_actions = []
-        for j, row in enumerate(this.board):
+        for j, row in enumerate(self.board):
             for k, item in enumerate(row):
                 if item == "-":
                     legal_actions.append(
@@ -181,12 +180,12 @@ class TTTState(BaseState):
         -------
         utility: int
             The utility received by the player, or None"""
-        if not this.is_final():
+        if not self.is_final():
             return None
 
-        success = this._find_success()
+        success = self._find_success()
         if success:
-            aim = ["O", "X"][this.players.index(player)]
+            aim = ["O", "X"][self.players.index(player)]
             if success[0] == aim:
                 return 1  # player achieved his goal and won
             else:
@@ -204,9 +203,9 @@ class TTTState(BaseState):
         str
             String representation of this state."""
         s = "Tic-Tac-Toe: \n"
-        for row in this.board:
+        for row in self.board:
             s += "\t"+" ".join(row)+"\n"
-        s += "Player {}'s turn".format(this.pi)
+        s += "Player {}'s turn".format(self.pi)
 
     def __hash__(self):
         """Hash of the current state.
