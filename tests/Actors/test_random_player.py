@@ -1,10 +1,10 @@
-import ahorn.TicTacToe as TTT
+from ahorn.TicTacToe.States import TicTacToeState
 from ahorn.Actors import RandomPlayer
 from tests.MockPlayer import MockPlayer
 
 players = [RandomPlayer(), MockPlayer()]
 def test_random_player():
-    state = TTT.TTTState(players)
+    state = TicTacToeState(players)
     state.board = [
         ["X", "-", "X"],
         ["O", "-", "O"],

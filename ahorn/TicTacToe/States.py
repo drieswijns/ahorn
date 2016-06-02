@@ -1,7 +1,7 @@
 from ..GameBase import State as BaseState
-from . import TTTAction
+from .Actions import TicTacToeAction
 
-class TTTState(BaseState):
+class TicTacToeState(BaseState):
     """Describes a Tic-Tac-Toe state"""
     def __init__(self, players):
         """Initialise a Tic-Tac-Toe state
@@ -123,7 +123,7 @@ class TTTState(BaseState):
         -------
         State
             A copy of this state"""
-        new = TTTState(self.players)
+        new = TicTacToeState(self.players)
         new.copy(self)
         return new
 
@@ -160,7 +160,7 @@ class TTTState(BaseState):
             for k, item in enumerate(row):
                 if item == "-":
                     legal_actions.append(
-                        TTTAction(
+                        TicTacToeAction(
                             symbol=symbol,
                             where=(j, k)
                         )
@@ -203,7 +203,7 @@ class TTTState(BaseState):
         -------
         str
             String representation of this state."""
-        s = "Tic-Tac-Toe: \n"
+        s = ""
         for row in self.board:
             s += "\t"+" ".join(row)+"\n"
         s += "Player {}'s turn".format(self.pi)

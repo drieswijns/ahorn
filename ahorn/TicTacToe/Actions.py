@@ -1,7 +1,7 @@
 from ..GameBase import Action as BaseAction
 
 
-class TTTAction(BaseAction):
+class TicTacToeAction(BaseAction):
     """In Tac-Tac-Toe the only action is puttin an O or an X in a free space"""
     def __init__(self, symbol, where):
         """Initialise the TTTAction
