@@ -47,7 +47,7 @@ class TreeNode(object):
 
 class MCTSPlayer(Actor):
     """An player who uses the Monte Carlo Tree Search algorithm."""
-    def __init__(self, exploration_exploitation=1.4, simulation_count=10000, simulation_time=2):
+    def __init__(self, exploration_exploitation=1.4, simulation_count=10000, simulation_time=2, verbose=False):
         """Initialise the Monte Carlo Tree Search player.
 
         Parameters
@@ -58,10 +58,13 @@ class MCTSPlayer(Actor):
             maximum number of simulations
         simulation_time: float
             maximum seconds of simulation time
+        verbose: bool
+            print some information
 
         Returns
         -------
         """
+        self.verbose = verbose
         self.exploration_exploitation = exploration_exploitation
         self.simulation_count = simulation_count
         self.simulation_time = simulation_time
@@ -98,12 +101,20 @@ class MCTSPlayer(Actor):
             expanded_node, expanded_state = self.expansion_phase(selected_node, selected_state, action)
             utility = self.simulation_phase(expanded_state)
             self.backpropagation_phase(expanded_node, utility)
+            simulations += 1
 
         most_simulations, action_with_most_simulations = -1, None
         for action, tree_node in root.children.items():
             if tree_node.simulations > most_simulations:
                 most_simulations = tree_node.simulations
                 action_with_most_simulations = action
+
+        if self.verbose:
+            print("Total number of simulations: {}".format(str(simulations)))
+            print("Possible action, utility, simulations")
+            for action, child in root.children.items():
+                print("{}, {}, {}".format(str(action), str(child.utility), str(child.simulations)))
+
         return action_with_most_simulations
 
     def selection_phase(self, root_node, root_state):
@@ -140,7 +151,8 @@ class MCTSPlayer(Actor):
             # not been simulated yet
             # if found, simulate them first
             for legal_action in legal_actions:
-                if not legal_action in current_node.children.keys():
+                children_str = [str(child) for child in current_node.children.keys()]
+                if not str(legal_action) in children_str:
                     current_action = legal_action
                     return current_node, current_state, current_action
 
@@ -155,7 +167,7 @@ class MCTSPlayer(Actor):
                 ntotal = current_node.simulations
 
                 best_uct, best_action = -float('inf'), None
-                for action, child_state in current_node.children:
+                for action, child_state in current_node.children.items():
                     ni = child_state.simulations
                     win_percentage = child_state.utility[current_player_index]/ni
                     confidence = math.sqrt(math.log(ntotal)/ni)
@@ -166,8 +178,12 @@ class MCTSPlayer(Actor):
 
                 current_action = best_action
 
-            current_node = current_node[current_action]
+            current_node = current_node.children[current_action]
             current_state = current_action.execute(current_state)
+            if current_state.is_final():
+                # premature end because the constructed MCTS tree
+                # contains a path from root to leaf in the real game tree 
+                return current_node, current_state, current_action
 
     def expansion_phase(self, selected_node, selected_state, action):
         """The expansion phase of the MCTS algorithm.

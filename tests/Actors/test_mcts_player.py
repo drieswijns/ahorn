@@ -2,7 +2,7 @@ from ahorn.TicTacToe.States import TicTacToeState
 from ahorn.Actors import RandomPlayer, MCTSPlayer
 from ahorn import Controller
 
-players = [RandomPlayer(), MCTSPlayer()]
+players = [RandomPlayer(), MCTSPlayer(simulation_count=100)]
 def test_mcts_player():
     average_utility = [0, 0]
     N = 10
