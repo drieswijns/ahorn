@@ -38,7 +38,7 @@ class TicTacToeAction(BaseAction):
     def __str__(self):
         """A string representation of this action.
 
-        For example: "Draw an X in position 1, 2"
+        For example: "Put a X in position 1, 2"
 
         Parameters
         ----------

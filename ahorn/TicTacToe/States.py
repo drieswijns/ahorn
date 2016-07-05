@@ -141,6 +141,18 @@ class TicTacToeState(BaseState):
             The player that must perform an action in this state."""
         return self.players[self.pi]
 
+    def get_players(self):
+        """Return a list of all the players in the game.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        List<Player>
+            A list of all the players in the game."""
+        return self.players
+
     def get_legal_actions(self, player):
         """Return the legal actions a player can take in this state.
 
@@ -193,7 +205,7 @@ class TicTacToeState(BaseState):
                 return -1  # other player achieved his goal and won
         return 0
 
-    def __str__(self):
+    def str(self, player):
         """Returns a string containing the board, and the current player
 
         Parameters

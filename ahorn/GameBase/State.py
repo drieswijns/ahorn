@@ -76,13 +76,26 @@ class State(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def get_legal_actions(self, player):
+    def get_players(self):
+        """Return a list of all the players in the game.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        List<Player>
+            A list of all the players in the game."""
+        pass
+
+    @abc.abstractmethod
+    def get_legal_actions(self, actor):
         """Return the legal actions a player can take in this state.
 
         Parameters
         ----------
-        player: Player
-            the player who wants to know which actions he can take
+        actor: Actor
+            the actor who wants to know which actions he can take
 
         Returns
         -------
@@ -108,26 +121,24 @@ class State(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def __str__(self):
-        """A string representation of this state.
+    def str(self, player):
+        """String representation of this state, from the eyes of a given player.
+
+        A string representation of the state, from the eyes of a given player.
+        In games of incomplete information, this should hide the opponent cards,
+        the deck, etc.
+        In games of complete information, ignore the player.
+
+        The string representation should be hashable, i.e. all states with the
+        same hash should be in the same information set.
 
         Parameters
         ----------
+        player: Player
+            The player from who's eyes the state should be represented
 
         Returns
         -------
         str
             String representation of this state."""
         pass
-
-    def __hash__(self):
-        """Get a hash of the current state.
-
-        Parameters
-        ----------
-
-        Returns
-        -------
-        int
-            The hash of the state"""
-        return hash(str(self))

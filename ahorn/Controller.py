@@ -29,14 +29,14 @@ class Controller(object):
 
         state = self.state
         while not state.is_final():
-            if self.verbose: print(str(state))
             actor = state.get_actor()
+            if self.verbose: print(state.str(actor))
             action = actor.get_action(state.get_random(actor))
             state = action.execute(state)
             if self.verbose: print(str(action))
         self.state = state
         if self.verbose:
-            print(str(state))
+            print(state.str(actor))
             print("Points: {}".format(" ,".join([
                 str(state.get_utility(player))
                 for player in state.players

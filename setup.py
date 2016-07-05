@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
   name = 'ahorn',
-  packages = ['ahorn'], # this must be the same as the name above
+  packages = ['ahorn'],
   version = '0.1',
   description = 'A game playing and game AI library',
   author = 'Dries Wijns',
@@ -11,8 +11,7 @@ setup(
   download_url = 'TODO', # I'll explain this in a second
   keywords = ['game', 'playing', 'AI'], # arbitrary keywords
   classifiers = [],
-  setup_requires=['pytest-runner'],
+  setup_requires=[],
   tests_require=['pytest'],
   package_data={"ahorn": ["ahorn/*"]},
-
 )

@@ -38,6 +38,16 @@ def test_get_legal_actions_two_actions():
     la = state.get_legal_actions(players[0])
     assert(len(la) == 2)
 
+def test_get_players():
+    state = TicTacToeState(players)
+    state.board = [
+        ["X", "O", "X"],
+        ["O", "-", "-"],
+        ["X", "O", "X"]
+    ]
+    la = state.get_players()
+    assert(len(la) == 2)
+
 def test_TicTacToeAction():
     state = TicTacToeState(players)
     state.board = [
