@@ -110,10 +110,16 @@ class MCTSPlayer(Actor):
                 action_with_most_simulations = action
 
         if self.verbose:
-            print("Total number of simulations: {}".format(str(simulations)))
-            print("Possible action, utility, simulations")
+            print("[MCTS] Total number of simulations: {}".format(str(simulations)))
+            print("[MCTS] Possible action, average utility, simulations")
             for action, child in root.children.items():
-                print("{}, {}, {}".format(str(action), str(child.utility), str(child.simulations)))
+                print(
+                    "[MCTS] {}, {}, {}".format(
+                        str(action),
+                        str(["{0:0.2f}".format(u/child.simulations) for u in child.utility]),
+                        str(child.simulations)
+                    )
+                )
 
         return action_with_most_simulations
 
@@ -182,7 +188,7 @@ class MCTSPlayer(Actor):
             current_state = current_action.execute(current_state)
             if current_state.is_final():
                 # premature end because the constructed MCTS tree
-                # contains a path from root to leaf in the real game tree 
+                # contains a path from root to leaf in the real game tree
                 return current_node, current_state, current_action
 
     def expansion_phase(self, selected_node, selected_state, action):

@@ -32,6 +32,7 @@ class Controller(object):
             actor = state.get_actor()
             if self.verbose: print(state.str(actor))
             action = actor.get_action(state.get_random(actor))
+            assert(str(action) in [str(a) for a in state.get_legal_actions(actor)])
             state = action.execute(state)
             if self.verbose: print(str(action))
         self.state = state
@@ -39,7 +40,7 @@ class Controller(object):
             print(state.str(actor))
             print("Points: {}".format(" ,".join([
                 str(state.get_utility(player))
-                for player in state.players
+                for player in state.get_players()
             ])))
 
         return self.state
