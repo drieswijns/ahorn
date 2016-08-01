@@ -27,12 +27,12 @@ Adding a new game
 
 A game is described by states and actions.
 To describe a new game, subclass ahorn.GameBase.State and ahorn.GameBase.Action.
-Take a look at the example game ahorn.TicTacToe.
+Take a look at the example: ahorn.TicTacToe.
 
 Adding new AI
 =============
 
 Ahorn comes with a generic AI based on the Monte Carlo Tree Search algorithm:
  ahorn.Actors.MCTSPlayer.
-To exeriment with new AI, subclass ahorn.GameBase.Player, Take a look at the
-example AI ahorn.Actors.RandomPlayer.
+To create a new AI, subclass ahorn.GameBase.Player. Take a look at the
+example: ahorn.Actors.RandomPlayer.
