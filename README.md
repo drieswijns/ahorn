@@ -23,6 +23,7 @@ Installation
     pip install ahorn
 
 or
+
     git clone https://github.com/drieswijns/ahorn
     pip3 install -r requirements.txt
     python3 setup.py install
