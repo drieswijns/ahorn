@@ -7,8 +7,8 @@ setup(
   description = 'A game playing and game AI library',
   author = 'Dries Wijns',
   author_email = 'dries.wijns@gmail.com',
-  url = 'TODO', # use the URL to the github repo
-  download_url = 'TODO', # I'll explain this in a second
+  url = 'https://github.com/drieswijns/ahorn',
+  download_url = 'https://github.com/drieswijns/ahorn/tarball/master',
   keywords = ['game', 'playing', 'AI', 'MCTS'],
   classifiers = [],
   package_data={"ahorn": ["ahorn/*"]},
