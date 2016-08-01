@@ -1,7 +1,8 @@
 Ahorn
 ===================
 
-A game description framework and game playing AI library.
+A game description framework and game playing AI library,
+written entirely in Python.
 
 Quickstart
 ==========
@@ -10,6 +11,16 @@ Quickstart
   >>> starting_state = ahorn.TicTacToe.TicTacToeState([player_a, player_b])
   >>> controller = ahorn.Controller(starting_state, verbose=True)
   >>> controller.play()
+
+Installation
+============
+  $ pip3 install -r requirements.txt
+  $ python3 setup.py install
+  $ python3 run.py  # should start playing a game
+
+Running the tests
+=================
+  $ python3 -m pytest tests
 
 Adding a new game
 =================
