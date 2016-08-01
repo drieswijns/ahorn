@@ -47,7 +47,7 @@ class TreeNode(object):
 
 class MCTSPlayer(Actor):
     """An player who uses the Monte Carlo Tree Search algorithm."""
-    def __init__(self, exploration_exploitation=1.4, simulation_count=10000, simulation_time=2, verbose=False):
+    def __init__(self, exploration_exploitation=1.4, simulation_count=10000, simulation_time=90, verbose=False, verboseverbose=False):
         """Initialise the Monte Carlo Tree Search player.
 
         Parameters
@@ -60,11 +60,14 @@ class MCTSPlayer(Actor):
             maximum seconds of simulation time
         verbose: bool
             print some information
+        verboseverbose: bool
+            print even more information
 
         Returns
         -------
         """
         self.verbose = verbose
+        self.verboseverbose = verboseverbose
         self.exploration_exploitation = exploration_exploitation
         self.simulation_count = simulation_count
         self.simulation_time = simulation_time
@@ -74,13 +77,15 @@ class MCTSPlayer(Actor):
 
         Parameters
         ----------
-        State:
+        state: State
             The state in which the actor must perform an action
 
         Returns
         -------
-        Action:
+        action: Action
             Best action according to MCTS algorithm"""
+        if len(state.get_legal_actions(self)) == 1:
+            return state.get_legal_actions(self)[0]
         n_players = len(state.get_players())
         # build a new tree
         root = TreeNode(
@@ -110,7 +115,7 @@ class MCTSPlayer(Actor):
                 action_with_most_simulations = action
 
         if self.verbose:
-            print("[MCTS] Total number of simulations: {}".format(str(simulations)))
+            print("[MCTS] Total number of simulations: {} in {} seconds".format(str(simulations), time.time()-start_time))
             print("[MCTS] Possible action, average utility, simulations")
             for action, child in root.children.items():
                 print(
@@ -238,7 +243,11 @@ class MCTSPlayer(Actor):
             actor = state.get_actor()
             actions = state.get_legal_actions(actor)
             action = random.choice(actions)
+            if self.verboseverbose:
+                print("[MCTS][simulation]: {}".format(str(action)))
             state = action.execute(state)
+            if self.verboseverbose:
+                print(state.str(actor))
         return [
             state.get_utility(player)
             for player in state.get_players()
