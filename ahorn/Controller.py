@@ -1,18 +1,24 @@
 class Controller(object):
-    """A controller is used to play a game."""
+    """A controller is used to play a game
+
+    The controller servers as the main interface to playing games.
+    Example:
+        import ahorn, ahorn.Actors, ahorn.TicTacToe
+        player_a, player_b = ahorn.Actors.MCTSPlayer(), ahorn.Actors.MCTSPlayer()
+        starting_state = ahorn.TicTacToe.TicTacToeState([player_a, player_b])
+        controller = ahorn.Controller(starting_state, verbose=True)
+        controller.play()
+
+    Parameters
+    ----------
+    players: List
+        List of Player objects
+    inititial_state: State
+        State object from which to start the game
+
+    Returns
+    -------"""
     def __init__(self, initial_state, verbose=False):
-        """Create a controller by providing players and a state
-
-        Parameters
-        ----------
-        players: List
-            List of Player objects
-        inititial_state: State
-            State object from which to start the game
-
-        Returns
-        -------
-        """
         self.state = initial_state
         self.verbose = verbose
 
