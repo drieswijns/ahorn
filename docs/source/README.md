@@ -14,8 +14,16 @@ Quickstart
     controller = ahorn.Controller(starting_state, verbose=True)
     controller.play()
 
+Documentation
+=============
+Documentation can be found on [read the docs](http://ahorn.readthedocs.io/en/latest/)
+
 Installation
 ============
+    pip install ahorn
+
+or
+    git clone https://github.com/drieswijns/ahorn
     pip3 install -r requirements.txt
     python3 setup.py install
     python3 run.py  # start playing a game
