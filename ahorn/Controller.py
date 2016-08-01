@@ -7,7 +7,7 @@ class Controller(object):
         player_a, player_b = ahorn.Actors.MCTSPlayer(), ahorn.Actors.MCTSPlayer()
         starting_state = ahorn.TicTacToe.TicTacToeState([player_a, player_b])
         controller = ahorn.Controller(starting_state, verbose=True)
-        controller.play()
+        controller.play()  
 
     Parameters
     ----------
