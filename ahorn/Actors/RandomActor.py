@@ -3,16 +3,14 @@ from ..GameBase import Actor
 
 
 class RandomActor(Actor):
-    """An actor who always choses random actions."""
+    """An actor who always choses random actions.
+
+    Parameters
+    ----------
+
+    Returns
+    -------"""
     def __init__(self):
-        """Initialise the RandomActor.
-
-        Parameters
-        ----------
-
-        Returns
-        -------
-        """
         pass
 
     def get_action(self, state):

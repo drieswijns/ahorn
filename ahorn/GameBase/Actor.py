@@ -1,17 +1,16 @@
 import abc
 
 class Actor(metaclass=abc.ABCMeta):
-    """An actor performs actions and drives a game from state to state."""
+    """An actor performs actions and drives a game from state to state.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
     @abc.abstractmethod
     def __init__(self):
-        """Initialise an actor.
-
-        Parameters
-        ----------
-
-        Returns
-        -------
-        """
         pass
 
     @abc.abstractmethod

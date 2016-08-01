@@ -2,18 +2,16 @@ from ..GameBase import State as BaseState
 from .Actions import TicTacToeAction
 
 class TicTacToeState(BaseState):
-    """Describes a Tic-Tac-Toe state"""
+    """Describes a Tic-Tac-Toe state
+
+    Parameters
+    ----------
+    players: List
+        A list containing 2 Player objects
+
+    Returns
+    -------"""
     def __init__(self, players):
-        """Initialise a Tic-Tac-Toe state
-
-        Parameters
-        ----------
-        players: List
-            A list containing 2 Player objects
-
-        Returns
-        -------
-        """
         self.board = [
             ["-", "-", "-"],
             ["-", "-", "-"],

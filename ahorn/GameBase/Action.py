@@ -1,17 +1,15 @@
 import abc
 
 class Action(metaclass=abc.ABCMeta):
-    """An action modifies one game state into the other."""
+    """An action modifies one game state into the other.
+
+    Parameters
+    ----------
+
+    Returns
+    -------"""
     @abc.abstractmethod
     def __init__(self):
-        """Initialise an action.
-
-        Parameters
-        ----------
-
-        Returns
-        -------
-        """
         pass
 
     @abc.abstractmethod

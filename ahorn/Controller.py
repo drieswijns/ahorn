@@ -2,12 +2,6 @@ class Controller(object):
     """A controller is used to play a game
 
     The controller servers as the main interface to playing games.
-    Example:
-        import ahorn, ahorn.Actors, ahorn.TicTacToe
-        player_a, player_b = ahorn.Actors.MCTSPlayer(), ahorn.Actors.MCTSPlayer()
-        starting_state = ahorn.TicTacToe.TicTacToeState([player_a, player_b])
-        controller = ahorn.Controller(starting_state, verbose=True)
-        controller.play()  
 
     Parameters
     ----------

@@ -2,19 +2,18 @@ from ..GameBase import Action as BaseAction
 
 
 class TicTacToeAction(BaseAction):
-    """In Tac-Tac-Toe the only action is puttin an O or an X in a free space"""
+    """In Tac-Tac-Toe the only action is puttin an O or an X in a free space
+
+    Parameters
+    ----------
+        symbol: str
+            Either "X" or "O"
+        where: (int, int)
+            A tuple with row and column index
+
+    Returns
+    -------"""
     def __init__(self, symbol, where):
-        """Initialise the TTTAction
-
-        Parameters
-        ----------
-            symbol: str
-                Either "X" or "O"
-            where: (int, int)
-                A tuple with row and column index
-
-        Returns
-        -------"""
         self.symbol = symbol
         self.where = where
 

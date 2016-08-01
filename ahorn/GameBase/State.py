@@ -1,16 +1,15 @@
 import abc
 
 class State(metaclass=abc.ABCMeta):
-    """Describes the attributes of a game at a particular time"""
+    """Describes the attributes of a game at a particular time
+
+    Parameters
+    ----------
+
+    Returns
+    -------"""
     @abc.abstractmethod
     def __init__(self):
-        """Initialise a state
-
-        Parameters
-        ----------
-
-        Returns
-        -------"""
         pass
 
     @abc.abstractmethod
