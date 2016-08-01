@@ -1,26 +1,31 @@
+"""
+The Monte Carlo Tree Search player is a generic player, and can be used in games
+of incomplete information and with chance events.
+
+It is based on the Monte Carlo Tree Search algorithm.
+"""
 import random, time, math
 from ..GameBase import Actor
 
 class TreeNode(object):
-    """A tree node to build internal game tree for MCTS algorithm"""
+    """A tree node to build internal game tree for MCTS algorithm
+
+    Parameters
+    ----------
+    utility: List
+        A utility vector with the utility for each player,
+        for example [-1, 1] in a game with 2 players.
+    simulations: int
+        An number signifying how many times this node has been visited
+        during the MCTS algorithm
+    parent: TreeNode
+        The parent of this node
+    children: dict<Action -> TreeNode>
+        A dictionary with actions as the keys, and treenodes as the values
+
+    Returns
+    -------"""
     def __init__(self, utility=None, simulations=0, parent=None, children=None):
-        """Initialise TreeNode.
-
-        Parameters
-        ----------
-        utility: List
-            A utility vector with the utility for each player,
-            for example [-1, 1] in a game with 2 players.
-        simulations: int
-            An number signifying how many times this node has been visited
-            during the MCTS algorithm
-        parent: TreeNode
-            The parent of this node
-        children: dict<Action -> TreeNode>
-            A dictionary with actions as the keys, and treenodes as the values
-
-        Returns
-        -------"""
         self.parent = parent
         self.simulations = simulations
         if not children:
@@ -46,26 +51,25 @@ class TreeNode(object):
         return len(self.children) == 0
 
 class MCTSPlayer(Actor):
-    """An player who uses the Monte Carlo Tree Search algorithm."""
+    """A player who uses the Monte Carlo Tree Search algorithm.
+
+    Parameters
+    ----------
+    exploration_exploitation: float
+        the exploration/exploitation parameter
+    simulation_count: int
+        maximum number of simulations
+    simulation_time: float
+        maximum seconds of simulation time
+    verbose: bool
+        print some information
+    verboseverbose: bool
+        print even more information
+
+    Returns
+    -------
+    """
     def __init__(self, exploration_exploitation=1.4, simulation_count=10000, simulation_time=90, verbose=False, verboseverbose=False):
-        """Initialise the Monte Carlo Tree Search player.
-
-        Parameters
-        ----------
-        exploration_exploitation: float
-            the exploration/exploitation parameter
-        simulation_count: int
-            maximum number of simulations
-        simulation_time: float
-            maximum seconds of simulation time
-        verbose: bool
-            print some information
-        verboseverbose: bool
-            print even more information
-
-        Returns
-        -------
-        """
         self.verbose = verbose
         self.verboseverbose = verboseverbose
         self.exploration_exploitation = exploration_exploitation

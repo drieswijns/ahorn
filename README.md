@@ -18,7 +18,7 @@ Installation
 ============
     pip3 install -r requirements.txt
     python3 setup.py install
-    python3 run.py  # should start playing a game
+    python3 run.py  # start playing a game
 
 Running the tests
 =================
