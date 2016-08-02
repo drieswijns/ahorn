@@ -23,6 +23,7 @@ Installation
     pip install ahorn
 
 or
+
     git clone https://github.com/drieswijns/ahorn
     pip3 install -r requirements.txt
     python3 setup.py install
@@ -47,6 +48,8 @@ Take a look at
 
 for an example.
 
+Or follow the in-depth [minesweeper tutorial](https://github.com/drieswijns/ahornsweeper).
+
 Adding new AI
 =============
 
@@ -63,3 +66,5 @@ Take a look at
     ahorn.Actors.RandomPlayer
 
 for an example.
+
+Or follow the in-depth [minesweeper tutorial](https://github.com/drieswijns/ahornsweeper).

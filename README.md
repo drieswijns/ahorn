@@ -48,6 +48,8 @@ Take a look at
 
 for an example.
 
+Or follow the in-depth [minesweeper tutorial](https://github.com/drieswijns/ahornsweeper).
+
 Adding new AI
 =============
 
@@ -64,3 +66,5 @@ Take a look at
     ahorn.Actors.RandomPlayer
 
 for an example.
+
+Or follow the in-depth [minesweeper tutorial](https://github.com/drieswijns/ahornsweeper).
