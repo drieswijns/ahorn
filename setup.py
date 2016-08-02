@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
   name = 'ahorn',
   packages = ['ahorn', 'ahorn.Actors', 'ahorn.GameBase', 'ahorn.TicTacToe'],
-  version = '0.1',
+  version = '0.1.1',
   description = 'A game playing and game AI library',
   author = 'Dries Wijns',
   author_email = 'dries.wijns@gmail.com',
