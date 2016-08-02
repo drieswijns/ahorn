@@ -21,6 +21,14 @@ ahorn.Controller module
     :undoc-members:
     :show-inheritance:
 
+ahorn.Arena module
+-----------------------
+
+.. automodule:: ahorn.Arena
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

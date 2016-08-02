@@ -6,13 +6,16 @@ class Arena(object):
     """In the arena you can test the strength of your Player on a given game
 
     Example:
-        player_a, player_b = MCTSPlayer(), MCTSPlayer()
-        arena = Arena(
+        > player_a, player_b = MCTSPlayer(), MCTSPlayer()
+
+        > arena = Arena(
             game=ahorn.TicTacToe.TicTacToeState,
             players=[player_a, player_b],
-            n_games=20
+            n_games=20,
+            verbose=True
         )
-        arena.play()
+
+        > arena.play()
 
     Parameters
     ----------
@@ -76,6 +79,17 @@ class Arena(object):
         return digests[low], digests[mid], digests[high]
 
     def play(self):
+        """Evaluate the strength of a player on a game.
+
+        If verbose=True, will print intermediate results.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        result: dict<player, utility>
+            the average utility of each player"""
         utilities = {
             player: []
             for player
