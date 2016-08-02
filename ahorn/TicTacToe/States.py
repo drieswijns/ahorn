@@ -218,3 +218,6 @@ class TicTacToeState(BaseState):
             s += "\t"+" ".join(row)+"\n"
         s += "Player {}'s turn".format(self.pi)
         return s
+
+    def __str__(self):
+        return "TicTacToe"

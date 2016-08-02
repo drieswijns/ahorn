@@ -28,3 +28,6 @@ class RandomActor(Actor):
         return random.choice(
             state.get_legal_actions(self)
         )
+
+    def __str__(self):
+        return "RandomActor"

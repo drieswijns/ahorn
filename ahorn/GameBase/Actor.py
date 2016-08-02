@@ -24,6 +24,19 @@ class Actor(metaclass=abc.ABCMeta):
 
         Returns
         -------
-        Action:
+        action: Action
             The action the actor wants to take in this state."""
+        pass
+
+    @abc.abstractmethod
+    def __str__(self):
+        """A name for this actor
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        name: str
+            The name for this actor."""
         pass

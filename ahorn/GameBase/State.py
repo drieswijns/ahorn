@@ -9,8 +9,8 @@ class State(metaclass=abc.ABCMeta):
     Returns
     -------"""
     @abc.abstractmethod
-    def __init__(self):
-        pass
+    def __init__(self, players):
+        self.players = players
 
     @abc.abstractmethod
     def copy(self, other):
@@ -74,7 +74,6 @@ class State(metaclass=abc.ABCMeta):
             The actor that must perform an action in this state."""
         pass
 
-    @abc.abstractmethod
     def get_players(self):
         """Return a list of all the players in the game.
 
@@ -85,7 +84,7 @@ class State(metaclass=abc.ABCMeta):
         -------
         List<Player>
             A list of all the players in the game."""
-        pass
+        return self.players
 
     @abc.abstractmethod
     def get_legal_actions(self, actor):

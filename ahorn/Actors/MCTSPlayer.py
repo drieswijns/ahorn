@@ -281,3 +281,6 @@ class MCTSPlayer(Actor):
                 in zip(node.utility, utility)
             ]
             node = node.parent
+
+    def __str__(self):
+        return "MCTSPlayer"
